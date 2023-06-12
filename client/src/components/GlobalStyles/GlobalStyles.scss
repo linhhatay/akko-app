@@ -3,6 +3,7 @@
 
 :root {
     --primary-color: #446084;
+    --secondary-color: #d26e4b;
     --black: #000;
     --white: #fff;
     --text-color: #777;
@@ -69,7 +70,7 @@ body {
     }
 
     .tippy-arrow {
-        color: rgba(84, 84, 84, 0.92);
+        color: red;
     }
 
     .tippy-content {
@@ -79,4 +80,16 @@ body {
     .tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
         top: -8px;
     }
+
+    #tippy-2 {
+        top: 108%;
+        left: 0 !important;
+        right: 0 !important;
+        inset: unset;
+    }
+}
+
+.slick-active {
+    background-color: #fff;
+    opacity: 1 !important;
 }

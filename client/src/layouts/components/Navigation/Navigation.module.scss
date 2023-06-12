@@ -1,0 +1,12 @@
+.wrapper {
+    display: flex;
+}
+
+.divider {
+    display: inline-block;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    height: 30px;
+    vertical-align: middle;
+    position: relative;
+    margin: 0 7.5px;
+}

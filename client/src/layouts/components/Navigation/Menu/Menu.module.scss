@@ -1,0 +1,32 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.menu-item {
+    display: inline-block;
+    margin: 0 7px;
+
+    &:hover {
+        cursor: pointer;
+        color: rgba(17, 17, 17, 0.85);
+    }
+}
+
+.title {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 0;
+    color: rgba(102, 102, 102, 0.85);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: 700;
+}
+
+.dropdown {
+    font-size: 16px;
+    margin-left: 0.2em;
+    opacity: 0.6;
+}

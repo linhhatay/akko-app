@@ -1,0 +1,17 @@
+.wrapper {
+    display: block;
+
+    span {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+.primary {
+    background-color: var(--primary-color);
+}
+
+.secondary {
+    background-color: var(--secondary-color);
+}

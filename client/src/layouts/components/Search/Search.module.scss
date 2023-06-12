@@ -1,0 +1,117 @@
+.wrapper {
+    flex: 1;
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    input {
+        background-color: rgba(0, 0, 0, 0.03);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-color: rgba(0, 0, 0, 0.09);
+        color: black;
+        border-radius: 99px;
+        border: 1px solid #ddd;
+        padding: 0 0.75em;
+        font: inherit;
+        font-size: 0.97em;
+        height: 2.507em;
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+.form {
+    position: relative;
+    width: 97%;
+    font-size: 0.85em;
+    padding-right: 4px;
+}
+
+.search-btn {
+    margin-left: -2.9em;
+    padding-right: 4px;
+    max-height: 100%;
+    font-size: 0.85em;
+    z-index: 9;
+    cursor: pointer;
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.5em;
+        padding-left: 0.6em;
+        padding-right: 0.6em;
+        line-height: 2.4em;
+        height: 100%;
+    }
+}
+
+.search-icon {
+    font: inherit;
+    font-size: 1.4em;
+    letter-spacing: 0.03em;
+}
+
+.loading {
+    margin-left: -1.89em;
+    animation: spinner 1s linear infinite;
+
+    @keyframes spinner {
+        from {
+            transform: rotate(0);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+.search-result {
+    max-height: 80vh;
+    // position: absolute;
+    overflow-y: auto;
+    text-align: left;
+    color: #111;
+    font-size: 0.85em;
+    font-weight: normal;
+    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.autocomplete-suggestion {
+    display: flex;
+    align-items: center;
+    padding: 10px 0.75em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .image {
+        width: 40px;
+        height: 40px;
+        border-radius: 99px;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .name {
+        flex: 1;
+        margin-top: -0.15em;
+        padding-left: 0.5em;
+    }
+
+    .price {
+        padding-top: 3px;
+        margin-left: 5px;
+        font-size: 0.8em;
+    }
+}
