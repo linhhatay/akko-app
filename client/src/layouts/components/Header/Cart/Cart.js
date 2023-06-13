@@ -1,17 +1,33 @@
-import classNames from 'classnames/bind';
-import styles from './Cart.module.scss';
-import { FaShoppingBasket } from 'react-icons/fa';
 import Tippy from '@tippyjs/react/headless';
+import classNames from 'classnames/bind';
+import { useState } from 'react';
+import { FaShoppingBasket } from 'react-icons/fa';
+
 import 'tippy.js/dist/tippy.css';
+import Button from '~/components/Button/Button';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import config from '~/config';
-import Button from '~/components/Button/Button';
+import styles from './Cart.module.scss';
+import Modal from '~/components/Modal';
+import Sidebar from '../../Sidebar';
 
 const cx = classNames.bind(styles);
 
 function Cart() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        console.log('Close');
+        setIsModalOpen(false);
+    };
+
     return (
         <Tippy
+            visible={false}
             interactive
             placement="bottom-end"
             offset={[15, 10]}
@@ -53,11 +69,16 @@ function Cart() {
                 </div>
             )}
         >
-            <div className={cx('wrapper')}>
+            <div className={cx('wrapper')} onClick={handleOpenModal}>
                 <div className={cx('btn')}>
                     <span className={cx('badge')}>1</span>
                     <FaShoppingBasket className={cx('icon')} />
                 </div>
+                {isModalOpen && (
+                    <Modal onClose={handleCloseModal}>
+                        <Sidebar />
+                    </Modal>
+                )}
             </div>
         </Tippy>
     );

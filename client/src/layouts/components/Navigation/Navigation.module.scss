@@ -1,5 +1,9 @@
 .wrapper {
     display: flex;
+
+    @media screen and (max-width: 849px) {
+        display: none;
+    }
 }
 
 .divider {

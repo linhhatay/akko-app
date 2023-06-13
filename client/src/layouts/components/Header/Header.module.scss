@@ -1,21 +1,81 @@
 .wrapper {
-    height: 100px;
     background-color: rgba(255, 255, 255, 0.9);
+}
+
+.top-bar {
+    min-height: 30px;
+    background-color: #446084;
+    position: relative;
+    z-index: 9;
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 849px) {
+        display: flex;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        max-width: 1270px;
+
+        div {
+            font-size: 0.75em;
+            color: #fff;
+
+            strong {
+                line-height: 1.2;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                font-weight: bolder;
+            }
+        }
+    }
 }
 
 .inner {
     display: flex;
     align-items: center;
     max-width: 1270px;
-    height: 100%;
-    padding: 0 15px;
+    height: 100px;
     margin: 0 auto;
+    padding: 0 15px;
+
+    @media screen and (max-width: 549px) {
+        height: 70px;
+    }
+}
+
+.mobile-nav {
+    display: none;
+    flex: 1 1 0;
+    padding: 10px 0;
+    font-size: 0.8em;
+
+    @media screen and (max-width: 849px) {
+        display: flex;
+    }
+
+    &-icon {
+        font-size: 1.9em;
+        min-width: 1em;
+    }
 }
 
 .logo {
     display: flex;
     width: 166px;
     margin-right: 30px;
+
+    @media screen and (max-width: 849px) {
+        margin: 0 15px;
+
+        img {
+            margin: 0 auto;
+        }
+    }
 }
 
 .sticky {
@@ -30,6 +90,14 @@
     animation: stuckMoveDown 0.6s;
     -webkit-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.15);
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.15);
+
+    .top-bar {
+        display: none;
+    }
+
+    .inner {
+        height: 70px;
+    }
 }
 
 @keyframes stuckMoveDown {

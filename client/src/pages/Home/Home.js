@@ -5,6 +5,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 
 import styles from './Home.module.scss';
+import Button from '~/components/Button/Button';
+import config from '~/config';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 function NextArrow(props) {
@@ -33,7 +36,7 @@ function Home() {
         dotsClass: cx('dots'),
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: true,
+        // autoplay: true,
         autoplaySpeed: 5000,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
@@ -48,6 +51,76 @@ function Home() {
 
                 <img src="https://akko.vn/wp-content/uploads/2023/04/AKKO-3068B-banner-01-1400x510.jpg" alt="" />
             </Slider>
+            <div className={cx('product-row')}>
+                <div className={cx(['product-col'])}>
+                    <div className={cx('product-col-inner')}>
+                        <div className={cx('product-col-image')}>
+                            <Link to={config.routes.home}>
+                                <img
+                                    src="https://akko.vn/wp-content/uploads/2021/12/ban-phim-co-akko-3098n-multi-modes-world-tour-london-ava.jpg"
+                                    alt="product"
+                                />
+                            </Link>
+                        </div>
+                        <div className={cx('product-col-text')}>
+                            <div>
+                                <h2>Keyboard</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={cx(['product-col'])}>
+                    <div>
+                        <div className={cx('product-col-image')}>
+                            <Link to={config.routes.home}>
+                                <img
+                                    src="https://akko.vn/wp-content/uploads/2021/12/ban-phim-co-akko-3098n-multi-modes-world-tour-london-ava.jpg"
+                                    alt="product"
+                                />
+                            </Link>
+                        </div>
+                        <div className={cx('product-col-text')}>
+                            <div>
+                                <h2>Keyboard</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={cx(['product-col'])}>
+                    <div>
+                        <div className={cx('product-col-image')}>
+                            <Link to={config.routes.home}>
+                                <img
+                                    src="https://akko.vn/wp-content/uploads/2021/12/ban-phim-co-akko-3098n-multi-modes-world-tour-london-ava.jpg"
+                                    alt="product"
+                                />
+                            </Link>
+                        </div>
+                        <div className={cx('product-col-text')}>
+                            <div>
+                                <h2>Keyboard</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={cx(['product-col'])}>
+                    <div>
+                        <div className={cx('product-col-image')}>
+                            <Link to={config.routes.home}>
+                                <img
+                                    src="https://akko.vn/wp-content/uploads/2021/12/ban-phim-co-akko-3098n-multi-modes-world-tour-london-ava.jpg"
+                                    alt="product"
+                                />
+                            </Link>
+                        </div>
+                        <div className={cx('product-col-text')}>
+                            <div>
+                                <h2>Keyboard</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

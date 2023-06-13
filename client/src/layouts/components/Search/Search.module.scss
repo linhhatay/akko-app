@@ -1,5 +1,9 @@
 .wrapper {
     flex: 1;
+
+    @media screen and (max-width: 849px) {
+        display: none;
+    }
 }
 
 .inner {
