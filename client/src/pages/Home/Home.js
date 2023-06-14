@@ -5,7 +5,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 
 import styles from './Home.module.scss';
-import Button from '~/components/Button/Button';
 import config from '~/config';
 import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
@@ -45,11 +44,29 @@ function Home() {
     return (
         <div className={cx('wrapper')}>
             <Slider {...settings} className={cx('carousel')}>
-                <img src="https://akko.vn/wp-content/uploads/2023/04/5075B-Plus-goku-naruto-1400x510.jpg" alt="" />
+                <div className={cx('carousel-image')}>
+                    <img src="https://akko.vn/wp-content/uploads/2023/04/5075B-Plus-goku-naruto-1400x510.jpg" alt="" />
+                </div>
 
-                <img src="https://akko.vn/wp-content/uploads/2023/04/M1-Banner-1400x510.jpg" alt="" />
+                <div className={cx('carousel-image')}>
+                    <img src="https://akko.vn/wp-content/uploads/2023/04/M1-Banner-1400x510.jpg" alt="" />
+                </div>
 
-                <img src="https://akko.vn/wp-content/uploads/2023/04/AKKO-3068B-banner-01-1400x510.jpg" alt="" />
+                <div className={cx('carousel-image')}>
+                    <img src="https://akko.vn/wp-content/uploads/2023/04/AKKO-3068B-banner-01-1400x510.jpg" alt="" />
+                </div>
+
+                <div className={cx('carousel-image')}>
+                    <img src="https://akko.vn/wp-content/uploads/2023/04/AKKO-3068B-banner-01-1400x510.jpg" alt="" />
+                </div>
+
+                <div className={cx('carousel-image')}>
+                    <img src="https://akko.vn/wp-content/uploads/2023/04/AKKO-3068B-banner-01-1400x510.jpg" alt="" />
+                </div>
+
+                <div className={cx('carousel-image')}>
+                    <img src="https://akko.vn/wp-content/uploads/2023/04/AKKO-3068B-banner-01-1400x510.jpg" alt="" />
+                </div>
             </Slider>
             <div className={cx('product-row')}>
                 <div className={cx(['product-col'])}>
@@ -64,7 +81,7 @@ function Home() {
                         </div>
                         <div className={cx('product-col-text')}>
                             <div>
-                                <h2>Keyboard</h2>
+                                <h2>KEYBOARD</h2>
                             </div>
                         </div>
                     </div>
@@ -74,14 +91,14 @@ function Home() {
                         <div className={cx('product-col-image')}>
                             <Link to={config.routes.home}>
                                 <img
-                                    src="https://akko.vn/wp-content/uploads/2021/12/ban-phim-co-akko-3098n-multi-modes-world-tour-london-ava.jpg"
+                                    src="https://akko.vn/wp-content/uploads/2020/11/AKKO-AG325-One-Piece-Zoro-07.jpg"
                                     alt="product"
                                 />
                             </Link>
                         </div>
                         <div className={cx('product-col-text')}>
                             <div>
-                                <h2>Keyboard</h2>
+                                <h2>MOUSE</h2>
                             </div>
                         </div>
                     </div>
@@ -91,14 +108,14 @@ function Home() {
                         <div className={cx('product-col-image')}>
                             <Link to={config.routes.home}>
                                 <img
-                                    src="https://akko.vn/wp-content/uploads/2021/12/ban-phim-co-akko-3098n-multi-modes-world-tour-london-ava.jpg"
+                                    src="https://akko.vn/wp-content/uploads/2021/01/akko-keycap-neon-02.jpg"
                                     alt="product"
                                 />
                             </Link>
                         </div>
                         <div className={cx('product-col-text')}>
                             <div>
-                                <h2>Keyboard</h2>
+                                <h2>KEYCAP</h2>
                             </div>
                         </div>
                     </div>
@@ -107,15 +124,12 @@ function Home() {
                     <div>
                         <div className={cx('product-col-image')}>
                             <Link to={config.routes.home}>
-                                <img
-                                    src="https://akko.vn/wp-content/uploads/2021/12/ban-phim-co-akko-3098n-multi-modes-world-tour-london-ava.jpg"
-                                    alt="product"
-                                />
+                                <img src="https://akko.vn/wp-content/uploads/2020/10/ad701-2.jpg" alt="product" />
                             </Link>
                         </div>
                         <div className={cx('product-col-text')}>
                             <div>
-                                <h2>Keyboard</h2>
+                                <h2>Accessories</h2>
                             </div>
                         </div>
                     </div>

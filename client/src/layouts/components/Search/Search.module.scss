@@ -1,64 +1,60 @@
 .wrapper {
     flex: 1;
-
-    @media screen and (max-width: 849px) {
-        display: none;
-    }
 }
 
 .inner {
+    position: relative;
     display: flex;
     align-items: center;
-    position: relative;
 
     input {
+        width: 100%;
+        max-width: 100%;
+        height: 2.507em;
+        padding: 0 0.75em;
+        color: black;
+        border: 1px solid #ddd;
+        border-color: rgba(0, 0, 0, 0.09);
+        border-radius: 99px;
         background-color: rgba(0, 0, 0, 0.03);
         -webkit-box-shadow: none;
         box-shadow: none;
-        border-color: rgba(0, 0, 0, 0.09);
-        color: black;
-        border-radius: 99px;
-        border: 1px solid #ddd;
-        padding: 0 0.75em;
         font: inherit;
         font-size: 0.97em;
-        height: 2.507em;
-        max-width: 100%;
-        width: 100%;
     }
 }
 
 .form {
     position: relative;
     width: 97%;
-    font-size: 0.85em;
     padding-right: 4px;
+    font-size: 0.85em;
 }
 
 .search-btn {
+    z-index: 9;
+    max-height: 100%;
     margin-left: -2.9em;
     padding-right: 4px;
-    max-height: 100%;
-    font-size: 0.85em;
-    z-index: 9;
     cursor: pointer;
+    font-size: 0.85em;
 
     div {
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
         min-width: 2.5em;
-        padding-left: 0.6em;
-        padding-right: 0.6em;
-        line-height: 2.4em;
         height: 100%;
+        padding-right: 0.6em;
+        padding-left: 0.6em;
+        line-height: 2.4em;
     }
 }
 
 .search-icon {
+    letter-spacing: 0.03em;
     font: inherit;
     font-size: 1.4em;
-    letter-spacing: 0.03em;
 }
 
 .loading {
@@ -76,16 +72,16 @@
 }
 
 .search-result {
-    max-height: 80vh;
     // position: absolute;
     overflow-y: auto;
+    max-height: 80vh;
     text-align: left;
     color: #111;
-    font-size: 0.85em;
-    font-weight: normal;
+    background-color: rgba(255, 255, 255, 0.95);
     -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.95);
+    font-size: 0.85em;
+    font-weight: normal;
 }
 
 .autocomplete-suggestion {
@@ -100,11 +96,11 @@
     }
 
     .image {
+        display: inline-block;
         width: 40px;
         height: 40px;
-        border-radius: 99px;
-        display: inline-block;
         margin-right: 10px;
+        border-radius: 99px;
     }
 
     .name {
@@ -114,8 +110,8 @@
     }
 
     .price {
-        padding-top: 3px;
         margin-left: 5px;
+        padding-top: 3px;
         font-size: 0.8em;
     }
 }

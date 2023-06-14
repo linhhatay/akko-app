@@ -9,7 +9,6 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import config from '~/config';
 import styles from './Cart.module.scss';
 import Modal from '~/components/Modal';
-import Sidebar from '../../Sidebar';
 
 const cx = classNames.bind(styles);
 
@@ -27,7 +26,7 @@ function Cart() {
 
     return (
         <Tippy
-            visible={false}
+            // visible={false}
             interactive
             placement="bottom-end"
             offset={[15, 10]}
@@ -74,11 +73,7 @@ function Cart() {
                     <span className={cx('badge')}>1</span>
                     <FaShoppingBasket className={cx('icon')} />
                 </div>
-                {isModalOpen && (
-                    <Modal onClose={handleCloseModal}>
-                        <Sidebar />
-                    </Modal>
-                )}
+                {isModalOpen && <Modal onClose={handleCloseModal}>Cart</Modal>}
             </div>
         </Tippy>
     );

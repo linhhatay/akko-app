@@ -2,19 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
 :root {
+    --font-family: 'Lato', sans-serif;
+
+    --black: #000;
     --primary-color: #446084;
     --secondary-color: #d26e4b;
-    --black: #000;
-    --white: #fff;
     --text-color: #777;
-
-    --font-family: 'Lato', sans-serif;
+    --white: #fff;
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
@@ -22,12 +22,13 @@ html {
 }
 
 body {
+    color: var(--text-color);
     font-family: var(--font-family);
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 1.6;
+
     text-rendering: optimizespeed;
-    color: var(--text-color);
     // overflow-y: overlay;
 }
 
@@ -50,23 +51,23 @@ body {
 button,
 input,
 [tabindex] {
-    outline: none;
     border: none;
+    outline: none;
 }
 
 a {
-    color: var(--text-color);
     text-decoration: none;
+    color: var(--text-color);
 }
 
 // Custom tippy tooltip
 body {
     .tippy-box {
         border-radius: 8px;
-        font-weight: 600;
-        font-size: 1.6rem;
-        line-height: 2.2rem;
         background-color: rgba(84, 84, 84, 0.92);
+        font-size: 1.6rem;
+        font-weight: 600;
+        line-height: 2.2rem;
     }
 
     .tippy-arrow {
@@ -83,13 +84,14 @@ body {
 
     #tippy-2 {
         top: 108%;
-        left: 0 !important;
         right: 0 !important;
+        left: 0 !important;
+
         inset: unset;
     }
 }
 
 .slick-active {
-    background-color: #fff;
     opacity: 1 !important;
+    background-color: #fff;
 }

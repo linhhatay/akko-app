@@ -7,10 +7,10 @@
 }
 
 .divider {
-    display: inline-block;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-    height: 30px;
-    vertical-align: middle;
     position: relative;
+    display: inline-block;
+    height: 30px;
     margin: 0 7.5px;
+    vertical-align: middle;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
 }

@@ -3,13 +3,13 @@
 }
 
 .top-bar {
-    min-height: 30px;
-    background-color: #446084;
     position: relative;
     z-index: 9;
     display: none;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    min-height: 30px;
+    background-color: #446084;
 
     @media screen and (max-width: 849px) {
         display: flex;
@@ -18,18 +18,18 @@
     div {
         display: flex;
         align-items: center;
-        height: 100%;
         max-width: 1270px;
+        height: 100%;
 
         div {
-            font-size: 0.75em;
             color: #fff;
+            font-size: 0.75em;
 
             strong {
-                line-height: 1.2;
-                text-transform: uppercase;
                 letter-spacing: 0.05em;
+                text-transform: uppercase;
                 font-weight: bolder;
+                line-height: 1.2;
             }
         }
     }
@@ -59,8 +59,8 @@
     }
 
     &-icon {
-        font-size: 1.9em;
         min-width: 1em;
+        font-size: 1.9em;
     }
 }
 
@@ -81,13 +81,13 @@
 .sticky {
     position: fixed;
     top: 0;
-    left: 0;
     right: 0;
+    left: 0;
     z-index: 9;
     height: 70px;
-    background-color: #fff;
     transition: all 0.3s;
     animation: stuckMoveDown 0.6s;
+    background-color: #fff;
     -webkit-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.15);
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.15);
 
