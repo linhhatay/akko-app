@@ -3,6 +3,7 @@ import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaPinterest, FaTwitter } from 'react-icons/fa';
 import { TfiEmail } from 'react-icons/tfi';
+import Socials from '~/components/Socials/Socials';
 
 const cx = classNames.bind(styles);
 
@@ -26,23 +27,7 @@ function Footer() {
                         <p>
                             <strong>Hotline: 0934.389.001</strong>
                         </p>
-                        <div className={cx('socials')}>
-                            <Link className={cx('social-icon')}>
-                                <FaFacebookF />
-                            </Link>
-                            <Link className={cx('social-icon')}>
-                                <FaInstagram />
-                            </Link>
-                            <Link className={cx('social-icon')}>
-                                <FaTwitter />
-                            </Link>
-                            <Link className={cx('social-icon')}>
-                                <TfiEmail />
-                            </Link>
-                            <Link className={cx('social-icon')}>
-                                <FaPinterest />
-                            </Link>
-                        </div>
+                        <Socials />
                     </div>
                     <div className={cx('widget')}>
                         <span>Akko Gear Việt Nam</span>

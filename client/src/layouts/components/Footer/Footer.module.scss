@@ -42,56 +42,6 @@
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-.socials {
-    display: flex;
-    vertical-align: middle;
-    color: #fff;
-    font-size: 0.85em;
-}
-
-.social-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 2.5em;
-    height: 2.5em;
-    margin-right: 0.12em;
-    margin-bottom: 1em;
-    margin-left: 0.12em;
-    padding: 0 1.2em;
-    cursor: pointer;
-    text-align: center;
-    letter-spacing: 0.03em;
-    color: currentColor;
-    border: 2px solid currentColor;
-    border-color: rgba(255, 255, 255, 0.5);
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    font-size: 0.97em;
-    font-weight: bolder;
-    line-height: 2.19em;
-
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-
-    &:hover {
-        color: #3a589d !important;
-        border-color: currentColor !important;
-        background-color: currentColor !important;
-
-        svg {
-            color: #fff;
-        }
-    }
-
-    svg {
-        min-width: 1em;
-        vertical-align: middle;
-        font-size: 1.4em;
-    }
-}
-
 .bottom {
     padding: 10px 0 15px;
     color: rgba(255, 255, 255, 0.5);

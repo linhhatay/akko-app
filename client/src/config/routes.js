@@ -8,6 +8,7 @@ const routes = {
     news: '/news',
     support: '/support',
     login: '/login',
+    productDetail: '/product-detail',
 };
 
 export default routes;
