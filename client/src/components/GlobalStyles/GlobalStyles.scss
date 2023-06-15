@@ -95,3 +95,24 @@ body {
     opacity: 1 !important;
     background-color: #fff;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: #555;
+    width: 100%;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    text-rendering: optimizeSpeed;
+}
+
+h5 {
+    font-size: 1em;
+}
+
+strong {
+    font-weight: bolder;
+}

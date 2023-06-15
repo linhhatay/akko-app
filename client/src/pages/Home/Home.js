@@ -3,10 +3,14 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
+import { Link } from 'react-router-dom';
 
 import styles from './Home.module.scss';
 import config from '~/config';
-import { Link } from 'react-router-dom';
+import Section from '~/layouts/components/Section';
+import { CiHeart, CiStar } from 'react-icons/ci';
+import Button from '~/components/Button';
+
 const cx = classNames.bind(styles);
 
 function NextArrow(props) {
@@ -130,6 +134,82 @@ function Home() {
                         <div className={cx('product-col-text')}>
                             <div>
                                 <h2>Accessories</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <Section icon={<CiStar />} title="Sản phẩm mới" />
+            <Section icon={<CiHeart />} title="Hàng sắp về" isMore />
+            <div className={cx('banner')}>
+                <div className={cx('banner-inner')}>
+                    <div className={cx('banner-fill')}></div>
+                    <div className={cx('banner-layer')}>
+                        <div className={cx('banner-content')}>
+                            <h3>Chờ đón sản phẩm mới</h3>
+                            <p>Akko sẽ mang đến những sản phẩm mới bất ngờ trong năm 2024.</p>
+                            <div className={cx('banner-timer')}>
+                                <span>
+                                    0 <strong>giờ</strong>
+                                </span>
+                                <span>
+                                    0 <strong>phút</strong>
+                                </span>
+                                <span>
+                                    0 <strong>giây</strong>
+                                </span>
+                            </div>
+                            <Button to="/">Xem ngay</Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={cx('gallery')}>
+                <div className={cx('gallery-item')}>
+                    <img src="https://akko.vn/wp-content/uploads/2021/02/akko-3068niu_800_1.jpg" alt="" />
+                </div>
+                <div className={cx('gallery-item')}>
+                    <img src="https://akko.vn/wp-content/uploads/2021/02/akko-3108_luffy_800_1.jpg" alt="" />
+                </div>
+            </div>
+            <div className={cx('featured')}>
+                <div>
+                    <div className={cx('featured-box')}>
+                        <div>
+                            <div className={cx('featured-box-icon')}>
+                                <img src="https://akko.vn/wp-content/uploads/2021/02/free-delivery.png" alt="" />
+                            </div>
+                            <div className={cx('featured-box-content')}>
+                                <h5>Miễn phí vận chuyển</h5>
+                                <p>
+                                    Tất cả sản phẩm được đặt hàng tại Akko.vn đều được miễn phí vận chuyển. Khách hàng
+                                    được kiểm tra hàng trước khi thanh toán.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={cx('featured-box')}>
+                        <div>
+                            <div className={cx('featured-box-icon')}>
+                                <img src="https://akko.vn/wp-content/uploads/2021/02/customer-service.png" alt="" />
+                            </div>
+                            <div className={cx('featured-box-content')}>
+                                <h5>Hỗ trợ 247</h5>
+                                <p>Hỗ trợ khách hàng trực tuyến về mua hàng cũng như các thắc mắc về sản phẩm .</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={cx('featured-box')}>
+                        <div>
+                            <div className={cx('featured-box-icon')}>
+                                <img src="https://akko.vn/wp-content/uploads/2021/02/warranty.png" alt="" />
+                            </div>
+                            <div className={cx('featured-box-content')}>
+                                <h5>Chế độ bảo hành vượt trội</h5>
+                                <p>
+                                    Tất cả sản phẩm Akko đều được bảo hành 12 tháng, 1 đổi 1. Trung tâm bảo hành toàn
+                                    quốc
+                                </p>
                             </div>
                         </div>
                     </div>
