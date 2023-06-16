@@ -5,7 +5,7 @@ const crypto = require("crypto");
 
 const userSchema = new mongoose.Schema(
   {
-    name: {
+    username: {
       type: String,
       default: "User",
     },
@@ -51,6 +51,15 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+userSchema.pre("save", function (next) {
+  if (this.email) {
+    const parts = this.email.split("@");
+    this.username = parts[0];
+  }
+
+  next();
+});
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();

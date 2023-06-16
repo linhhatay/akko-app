@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 const crypto = require("crypto");
+const bcrypt = require("bcryptjs");
 
 const catchAsync = require("../utils/catchAsync");
 const User = require("../models/userModel");
@@ -38,26 +39,47 @@ const createSendToken = (user, statusCode, res) => {
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
+  const email = req.body.email;
+
+  // Generate a random password
+  const password = Math.random().toString(36).slice(-8);
+
+  const message = `Password is: ${password}`;
+
   const newUser = await User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm,
+    email,
+    password,
+    passwordConfirm: password,
   });
 
-  createSendToken(newUser, 201, res);
+  if (newUser) {
+    try {
+      sendEmail({
+        email: email,
+        subject: "Your password",
+        message,
+      });
+
+      createSendToken(newUser, 201, res);
+    } catch (error) {
+      return next(
+        new AppError("There was an error sending the email. Try again later!"),
+        500
+      );
+    }
+  }
 });
 
 exports.login = catchAsync(async (req, res, next) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
   // 1) Check if email and password exist
-  if (!email || !password) {
-    return next(new AppError("Please provide email and password!", 400));
+  if (!username || !password) {
+    return next(new AppError("Please provide username and password!", 400));
   }
 
   // 2) Check if user exists && password is correct
-  const user = await User.findOne({ email }).select("+password");
+  const user = await User.findOne({ username }).select("+password");
 
   if (!user || !(await user.correctPassword(password, user.password))) {
     return next(new AppError("Incorrect email or password", 401));
@@ -154,7 +176,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
   const message = `Forgot your password? Submit a PATCH request with your new password and passwordConfirm to: ${resetURL}.\nIf you didn't forget your password, please ignore this email!`;
   try {
-    await sendEmail({
+    sendEmail({
       email: user.email,
       subject: "Your password reset token (valid for 10 min)",
       message,
