@@ -116,3 +116,16 @@ b,
 strong {
     font-weight: bolder;
 }
+
+label {
+    font-weight: bold;
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 0.4em;
+}
+
+@media screen and (max-width: 549px) {
+    h3 {
+        font-size: 1em !important;
+    }
+}

@@ -7,7 +7,7 @@ const routes = {
     accessory: '/accessory',
     news: '/news',
     support: '/support',
-    login: '/login',
+    account: '/account',
     productDetail: '/product-detail',
 };
 

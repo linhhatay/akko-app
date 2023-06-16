@@ -41,7 +41,7 @@ function Navigation() {
 
                 <div className={cx('divider')}></div>
 
-                <MenuItem title="Đăng nhập" to={config.routes.login} />
+                <MenuItem title="Đăng nhập" to={config.routes.account} />
             </Menu>
         </div>
     );
