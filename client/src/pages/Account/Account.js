@@ -1,11 +1,59 @@
 import classNames from 'classnames/bind';
-import styles from './Account.module.scss';
-import Button from '~/components/Button/Button';
+import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
+
+import Button from '~/components/Button';
+import { login, register } from '~/redux/actions/authAction';
+import styles from './Account.module.scss';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
 function Account() {
+    const dispatch = useDispatch();
+
+    const formLogin = useFormik({
+        initialValues: {
+            username: '',
+            password: '',
+        },
+        validationSchema: Yup.object({
+            username: Yup.string().required(),
+            password: Yup.string().required().min(6),
+        }),
+        onSubmit: (values, { resetForm, setFieldValue }) => {
+            const isSuccess = dispatch(login(values));
+
+            if (isSuccess) {
+                resetForm();
+            } else {
+                formLogin.setFieldValue('password', '');
+            }
+        },
+    });
+
+    const formRegister = useFormik({
+        initialValues: {
+            email: '',
+        },
+        validationSchema: Yup.object({
+            email: Yup.string()
+                .required('Required')
+                .matches(/^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/),
+        }),
+        onSubmit: (values, { resetForm, setFieldValue }) => {
+            const isSuccess = dispatch(register(values));
+
+            if (isSuccess) {
+                resetForm();
+            } else {
+                formLogin.setFieldValue('email', '');
+            }
+        },
+    });
+
     return (
         <div className={cx('wrapper')}>
             <div>
@@ -14,30 +62,52 @@ function Account() {
                         <div className={cx('login')}>
                             <div className={cx('login-inner')}>
                                 <h3>Đăng nhập</h3>
-                                <form>
+                                <form onSubmit={formLogin.handleSubmit}>
                                     <p>
                                         <label>
                                             Tên tài khoản hoặc địa chỉ email <span>*</span>
                                         </label>
-                                        <input type="text" />
+                                        <input
+                                            className={
+                                                formLogin.errors.username && formLogin.touched.username && cx('error')
+                                            }
+                                            type="text"
+                                            id="username"
+                                            name="username"
+                                            value={formLogin.values.username}
+                                            onChange={formLogin.handleChange}
+                                            onBlur={formLogin.handleBlur}
+                                        />
                                     </p>
                                     <p>
                                         <label>
                                             Mật khẩu <span>*</span>
                                         </label>
-                                        <input type="text" />
+                                        <input
+                                            className={
+                                                formLogin.errors.password && formLogin.touched.password && cx('error')
+                                            }
+                                            type="password"
+                                            id="password"
+                                            name="password"
+                                            value={formLogin.values.password}
+                                            onChange={formLogin.handleChange}
+                                            onBlur={formLogin.handleBlur}
+                                        />
                                     </p>
                                     <p className={cx('actions')}>
                                         <label className={cx('save-password')}>
                                             <input type="checkbox" />
                                             <span>Ghi nhớ mật khẩu</span>
                                         </label>
-                                        <Button primary className={cx('login-btn')}>
+                                        <Button type="submit" primary className={cx('login-btn')}>
                                             Đăng nhập
                                         </Button>
                                     </p>
                                     <p>
-                                        <Link className={cx('forgot-password')}>Quên mật khẩu?</Link>
+                                        <Link className={cx('forgot-password')} to={config.routes.forgotPassword}>
+                                            Quên mật khẩu?
+                                        </Link>
                                     </p>
                                 </form>
                             </div>
@@ -45,12 +115,22 @@ function Account() {
                         <div className={cx('register')}>
                             <div className={cx('register-inner')}>
                                 <h3>Đăng ký</h3>
-                                <form>
+                                <form onSubmit={formRegister.handleSubmit}>
                                     <p>
                                         <label>
                                             Địa chỉ email <span>*</span>
                                         </label>
-                                        <input type="text" />
+                                        <input
+                                            className={
+                                                formRegister.errors.email && formRegister.touched.email && cx('error')
+                                            }
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            value={formRegister.values.email}
+                                            onChange={formRegister.handleChange}
+                                            onBlur={formRegister.handleBlur}
+                                        />
                                     </p>
                                     <p>A password will be sent to your email address.</p>
                                     <div className={cx('privacy-text')}>
@@ -61,7 +141,7 @@ function Account() {
                                         </p>
                                     </div>
                                     <p>
-                                        <Button primary className={cx('register-btn')}>
+                                        <Button type="submit" primary className={cx('register-btn')}>
                                             Đăng ký
                                         </Button>
                                     </p>

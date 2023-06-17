@@ -1,5 +1,27 @@
 .wrapper {
 }
 
+.message {
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+
+    li {
+        list-style: none;
+        margin-bottom: 0.6em;
+
+        div {
+            max-width: 1270px;
+            padding-left: 15px;
+            padding-right: 15px;
+            color: #b20000;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
 .content {
 }

@@ -4,6 +4,7 @@ import styles from './Navigation.module.scss';
 import config from '~/config';
 import Dropdown from '~/components/Popper/Dropdown';
 import Menu, { MenuItem } from './Menu';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
@@ -23,6 +24,8 @@ const MENU_SUPPORT = [
 ];
 
 function Navigation() {
+    const { auth } = useSelector((state) => state);
+
     return (
         <div className={cx('wrapper')}>
             <Menu>
@@ -41,7 +44,7 @@ function Navigation() {
 
                 <div className={cx('divider')}></div>
 
-                <MenuItem title="Đăng nhập" to={config.routes.account} />
+                <MenuItem title={auth.isAuthenticated ? 'Tài khoản' : 'Đăng nhập'} to={config.routes.account} />
             </Menu>
         </div>
     );

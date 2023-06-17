@@ -8,9 +8,12 @@ const cx = classNames.bind(styles);
 function Button({
     to,
     href,
-    primary,
-    secondary,
-    rounded,
+    primary = false,
+    secondary = false,
+    text = false,
+    outline = false,
+    rounded = false,
+    disabled = false,
     children,
     className,
     leftIcon,
@@ -29,6 +32,8 @@ function Button({
         primary,
         secondary,
         rounded,
+        outline,
+        disabled,
     });
 
     if (to) {
