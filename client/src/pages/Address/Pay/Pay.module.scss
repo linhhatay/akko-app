@@ -1,0 +1,48 @@
+.wrapper {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.inner {
+    padding: 0 15px 30px;
+
+    form {
+        margin-bottom: 1.3em;
+
+        h3 {
+            font-size: 1.25em;
+        }
+
+        p {
+            margin-bottom: 0.5em;
+        }
+    }
+}
+
+.row-first {
+    display: inline-block;
+    width: 48%;
+    margin-right: 4%;
+
+    @media screen and (max-width: 549px) {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+.row-last {
+    display: inline-block;
+    width: 48%;
+
+    @media screen and (max-width: 549px) {
+        display: block;
+        width: 100%;
+    }
+}
+
+.save {
+    display: inline-block;
+    margin-bottom: 1em;
+    border-color: rgba(0, 0, 0, 0.05);
+}

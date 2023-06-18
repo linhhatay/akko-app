@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
@@ -12,6 +12,7 @@ import config from '~/config';
 const cx = classNames.bind(styles);
 
 function Account() {
+    const { auth } = useSelector((state) => state);
     const dispatch = useDispatch();
 
     const formLogin = useFormik({
@@ -58,97 +59,131 @@ function Account() {
         <div className={cx('wrapper')}>
             <div>
                 <div className={cx('inner')}>
-                    <div>
-                        <div className={cx('login')}>
-                            <div className={cx('login-inner')}>
-                                <h3>Đăng nhập</h3>
-                                <form onSubmit={formLogin.handleSubmit}>
-                                    <p>
-                                        <label>
-                                            Tên tài khoản hoặc địa chỉ email <span>*</span>
-                                        </label>
-                                        <input
-                                            className={
-                                                formLogin.errors.username && formLogin.touched.username && cx('error')
-                                            }
-                                            type="text"
-                                            id="username"
-                                            name="username"
-                                            value={formLogin.values.username}
-                                            onChange={formLogin.handleChange}
-                                            onBlur={formLogin.handleBlur}
-                                        />
-                                    </p>
-                                    <p>
-                                        <label>
-                                            Mật khẩu <span>*</span>
-                                        </label>
-                                        <input
-                                            className={
-                                                formLogin.errors.password && formLogin.touched.password && cx('error')
-                                            }
-                                            type="password"
-                                            id="password"
-                                            name="password"
-                                            value={formLogin.values.password}
-                                            onChange={formLogin.handleChange}
-                                            onBlur={formLogin.handleBlur}
-                                        />
-                                    </p>
-                                    <p className={cx('actions')}>
-                                        <label className={cx('save-password')}>
-                                            <input type="checkbox" />
-                                            <span>Ghi nhớ mật khẩu</span>
-                                        </label>
-                                        <Button type="submit" primary className={cx('login-btn')}>
-                                            Đăng nhập
-                                        </Button>
-                                    </p>
-                                    <p>
-                                        <Link className={cx('forgot-password')} to={config.routes.forgotPassword}>
-                                            Quên mật khẩu?
-                                        </Link>
-                                    </p>
-                                </form>
-                            </div>
+                    {auth.isAuthenticated ? (
+                        <div className={cx('dashboard')}>
+                            <p>
+                                Xin chào <strong>lng14092</strong> (không phải tài khoản <strong>lng14092</strong>? Hãy{' '}
+                                <a href="/">thoát ra</a> và đăng nhập vào tài khoản của bạn)
+                            </p>
+                            <p>
+                                Từ trang quản lý tài khoản bạn có thể xem <a href="/">đơn hàng mới</a>, quản lý{' '}
+                                <a href="/">địa chỉ giao hàng và thanh toán</a>, and{' '}
+                                <a href="/">sửa mật khẩu và thông tin tài khoản</a>.
+                            </p>
+                            <ul>
+                                <li>
+                                    <a href="/">Đơn hàng</a>
+                                </li>
+                                <li>
+                                    <a href="/">Tải xuống</a>
+                                </li>
+                                <li>
+                                    <a href="/">Địa chỉ</a>
+                                </li>
+                                <li>
+                                    <a href="/">Tài khoản</a>
+                                </li>
+                            </ul>
                         </div>
-                        <div className={cx('register')}>
-                            <div className={cx('register-inner')}>
-                                <h3>Đăng ký</h3>
-                                <form onSubmit={formRegister.handleSubmit}>
-                                    <p>
-                                        <label>
-                                            Địa chỉ email <span>*</span>
-                                        </label>
-                                        <input
-                                            className={
-                                                formRegister.errors.email && formRegister.touched.email && cx('error')
-                                            }
-                                            type="email"
-                                            id="email"
-                                            name="email"
-                                            value={formRegister.values.email}
-                                            onChange={formRegister.handleChange}
-                                            onBlur={formRegister.handleBlur}
-                                        />
-                                    </p>
-                                    <p>A password will be sent to your email address.</p>
-                                    <div className={cx('privacy-text')}>
+                    ) : (
+                        <div className={cx('content')}>
+                            <div className={cx('login')}>
+                                <div className={cx('login-inner')}>
+                                    <h3>Đăng nhập</h3>
+                                    <form onSubmit={formLogin.handleSubmit}>
                                         <p>
-                                            Tất cả thông tin của bạn chỉ được sử dụng cho việc đặt hàng và cải thiện
-                                            trải nghiệm sản phẩm. Ngoài ra được Akko đảm bảo về quyền riêng tư cá nhân
-                                            theo quy định luật pháp.
+                                            <label>
+                                                Tên tài khoản hoặc địa chỉ email <span>*</span>
+                                            </label>
+                                            <input
+                                                className={
+                                                    formLogin.errors.username &&
+                                                    formLogin.touched.username &&
+                                                    cx('error')
+                                                }
+                                                type="text"
+                                                id="username"
+                                                name="username"
+                                                value={formLogin.values.username}
+                                                onChange={formLogin.handleChange}
+                                                onBlur={formLogin.handleBlur}
+                                            />
                                         </p>
-                                    </div>
-                                    <p>
-                                        <Button type="submit" primary className={cx('register-btn')}>
-                                            Đăng ký
-                                        </Button>
-                                    </p>
-                                </form>
+                                        <p>
+                                            <label>
+                                                Mật khẩu <span>*</span>
+                                            </label>
+                                            <input
+                                                className={
+                                                    formLogin.errors.password &&
+                                                    formLogin.touched.password &&
+                                                    cx('error')
+                                                }
+                                                type="password"
+                                                id="password"
+                                                name="password"
+                                                value={formLogin.values.password}
+                                                onChange={formLogin.handleChange}
+                                                onBlur={formLogin.handleBlur}
+                                            />
+                                        </p>
+                                        <p className={cx('actions')}>
+                                            <label className={cx('save-password')}>
+                                                <input type="checkbox" />
+                                                <span>Ghi nhớ mật khẩu</span>
+                                            </label>
+                                            <Button type="submit" primary className={cx('login-btn')}>
+                                                Đăng nhập
+                                            </Button>
+                                        </p>
+                                        <p>
+                                            <Link className={cx('forgot-password')} to={config.routes.forgotPassword}>
+                                                Quên mật khẩu?
+                                            </Link>
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>
+                            <div className={cx('register')}>
+                                <div className={cx('register-inner')}>
+                                    <h3>Đăng ký</h3>
+                                    <form onSubmit={formRegister.handleSubmit}>
+                                        <p>
+                                            <label>
+                                                Địa chỉ email <span>*</span>
+                                            </label>
+                                            <input
+                                                className={
+                                                    formRegister.errors.email &&
+                                                    formRegister.touched.email &&
+                                                    cx('error')
+                                                }
+                                                type="email"
+                                                id="email"
+                                                name="email"
+                                                value={formRegister.values.email}
+                                                onChange={formRegister.handleChange}
+                                                onBlur={formRegister.handleBlur}
+                                            />
+                                        </p>
+                                        <p>A password will be sent to your email address.</p>
+                                        <div className={cx('privacy-text')}>
+                                            <p>
+                                                Tất cả thông tin của bạn chỉ được sử dụng cho việc đặt hàng và cải thiện
+                                                trải nghiệm sản phẩm. Ngoài ra được Akko đảm bảo về quyền riêng tư cá
+                                                nhân theo quy định luật pháp.
+                                            </p>
+                                        </div>
+                                        <p>
+                                            <Button type="submit" primary className={cx('register-btn')}>
+                                                Đăng ký
+                                            </Button>
+                                        </p>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
         </div>

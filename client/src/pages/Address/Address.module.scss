@@ -1,0 +1,36 @@
+.wrapper {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.inner {
+    padding: 0 15px 30px;
+
+    div {
+        p {
+            margin-bottom: 1.3em;
+        }
+    }
+}
+
+.col {
+    display: flex;
+
+    @media screen and (max-width: 849px) {
+        display: block;
+    }
+
+    & > div:last-child {
+        padding-left: 30px;
+
+        @media screen and (max-width: 849px) {
+            padding-left: 0;
+        }
+    }
+
+    header {
+        h3 {
+            font-size: 1.25em;
+        }
+    }
+}

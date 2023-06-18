@@ -27,9 +27,7 @@ function App() {
                                         <Page />
                                     </Layout>
                                 }
-                            >
-                                <Route path={route.nested?.path} element={route.nested?.component} />
-                            </Route>
+                            />
                         );
                     })}
                 </Routes>

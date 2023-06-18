@@ -7,6 +7,7 @@ import EditAccount from '~/pages/Account/EditAccount/EditAccount';
 
 import config from '~/config';
 import Address from '~/pages/Address';
+import Pay from '~/pages/Address/Pay';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
@@ -16,6 +17,7 @@ const publicRoutes = [
     { path: config.routes.resetPassword, component: ResetPassword },
     { path: config.routes.editAccount, component: EditAccount },
     { path: config.routes.editAddress, component: Address },
+    { path: config.routes.editAddressPay, component: Pay },
 ];
 
 const privateRoutes = [];

@@ -9,6 +9,7 @@ const routes = {
     support: '/support',
     account: '/account',
     editAccount: '/edit-account',
+    editAddressPay: '/edit-address/thanh-toan',
     editAddress: '/edit-address',
     forgotPassword: '/forgot-password',
     resetPassword: '/reset-password',

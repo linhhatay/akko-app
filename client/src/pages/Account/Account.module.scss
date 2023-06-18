@@ -9,13 +9,13 @@
 
 .inner {
     padding: 0 15px 30px;
+}
 
-    & > div {
-        display: flex;
-        flex-wrap: wrap;
-        max-width: 1300px;
-        margin: 0 -30px;
-    }
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1300px;
+    margin: 0 -30px;
 }
 
 .login,
@@ -139,4 +139,34 @@
 
 .register-btn {
     margin-bottom: 1em;
+}
+
+.dashboard {
+    p {
+        margin-bottom: 1.3em;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        line-height: 1;
+        font-size: 1.3em;
+        list-style: none;
+        margin-bottom: 1.3em;
+
+        li {
+            margin-left: 1.3em;
+            width: 33.333%;
+            margin-bottom: 0.6em;
+
+            a {
+                display: block;
+                border-radius: 5px;
+                padding: 20px 0;
+                border: 1px solid #ddd;
+                text-align: center;
+                margin-right: 10px;
+            }
+        }
+    }
 }
