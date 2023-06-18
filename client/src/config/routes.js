@@ -8,6 +8,8 @@ const routes = {
     news: '/news',
     support: '/support',
     account: '/account',
+    editAccount: '/edit-account',
+    editAddress: '/edit-address',
     forgotPassword: '/forgot-password',
     resetPassword: '/reset-password',
     productDetail: '/product-detail',
