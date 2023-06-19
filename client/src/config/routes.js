@@ -1,5 +1,6 @@
 const routes = {
     home: '/',
+    store: '/store',
     keyboard: '/keyboard',
     mouse: '/mouse',
     keycap: '/keycap',

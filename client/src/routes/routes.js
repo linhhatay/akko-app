@@ -8,10 +8,12 @@ import EditAccount from '~/pages/Account/EditAccount/EditAccount';
 import config from '~/config';
 import Address from '~/pages/Address';
 import Pay from '~/pages/Address/Pay';
+import Store from '~/pages/Store';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
     { path: config.routes.productDetail, component: ProductDetails },
+    { path: config.routes.store, component: Store },
     { path: config.routes.account, component: Account },
     { path: config.routes.forgotPassword, component: ForgotPassword },
     { path: config.routes.resetPassword, component: ResetPassword },
