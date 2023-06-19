@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 import styles from './Address.module.scss';
 import { Link } from 'react-router-dom';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -15,7 +16,7 @@ function Address() {
                             <div>
                                 <header>
                                     <h3>Địa chỉ thanh toán</h3>
-                                    <Link>Sửa</Link>
+                                    <Link to={config.routes.editAddressPay}>Sửa</Link>
                                 </header>
                                 <address>
                                     Họ Tên : Long Nguyễn <br />

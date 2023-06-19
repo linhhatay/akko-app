@@ -8,6 +8,8 @@ import Navigation from '../Navigation';
 import Cart from './Cart';
 import Modal from '~/components/Modal';
 import Sidebar from '../Sidebar';
+import { Link } from 'react-router-dom';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -81,7 +83,9 @@ function Header() {
                     </Modal>
                 )}
                 <div className={cx('logo')}>
-                    <img src="https://akko.vn/wp-content/uploads/2019/09/index_logo2.png" alt="logo" />
+                    <Link to={config.routes.home}>
+                        <img src="https://akko.vn/wp-content/uploads/2019/09/index_logo2.png" alt="logo" />
+                    </Link>
                 </div>
                 {!isMobile && <Search />}
                 <Navigation />

@@ -78,10 +78,10 @@ function Account() {
                                     <a href="/">Tải xuống</a>
                                 </li>
                                 <li>
-                                    <a href="/">Địa chỉ</a>
+                                    <Link to={config.routes.editAddress}>Địa chỉ</Link>
                                 </li>
                                 <li>
-                                    <a href="/">Tài khoản</a>
+                                    <Link to={config.routes.editAccount}>Tài khoản</Link>
                                 </li>
                             </ul>
                         </div>

@@ -69,6 +69,10 @@
     width: 166px;
     margin-right: 30px;
 
+    a {
+        display: flex;
+    }
+
     @media screen and (max-width: 849px) {
         margin: 0 15px;
 
