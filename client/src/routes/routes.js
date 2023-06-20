@@ -9,6 +9,7 @@ import config from '~/config';
 import Address from '~/pages/Address';
 import Pay from '~/pages/Address/Pay';
 import Store from '~/pages/Store';
+import Cart from '~/pages/Cart';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
@@ -20,6 +21,7 @@ const publicRoutes = [
     { path: config.routes.editAccount, component: EditAccount },
     { path: config.routes.editAddress, component: Address },
     { path: config.routes.editAddressPay, component: Pay },
+    { path: config.routes.cart, component: Cart },
 ];
 
 const privateRoutes = [];

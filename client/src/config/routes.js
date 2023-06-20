@@ -1,6 +1,7 @@
 const routes = {
     home: '/',
     store: '/store',
+    cart: '/gio-hang',
     keyboard: '/keyboard',
     mouse: '/mouse',
     keycap: '/keycap',
