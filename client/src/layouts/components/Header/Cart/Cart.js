@@ -9,11 +9,14 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import config from '~/config';
 import styles from './Cart.module.scss';
 import Modal from '~/components/Modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeFromCart } from '~/redux/actions/cartAction';
 
 const cx = classNames.bind(styles);
 
 function Cart() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const { items, total } = useSelector((state) => state.cart);
 
     const handleOpenModal = () => {
         setIsModalOpen(true);
@@ -22,6 +25,12 @@ function Cart() {
     const handleCloseModal = () => {
         console.log('Close');
         setIsModalOpen(false);
+    };
+
+    const dispatch = useDispatch();
+
+    const handleDeleteProduct = (product) => {
+        dispatch(removeFromCart(product));
     };
 
     return (
@@ -34,35 +43,46 @@ function Cart() {
                 <div className={cx('inner')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
                         <div className={cx('content')}>
-                            <div className={cx('product-list')}>
-                                <div className={cx('product-item')}>
-                                    <div className={cx('remove')}>x</div>
-                                    <Button to={config.routes.home} className={cx('product-info')}>
-                                        <img
-                                            src="https://akko.vn/wp-content/uploads/2023/03/ban-phim-co-akko-5075b-plus-naruto-001-768x768.jpg"
-                                            alt="product"
-                                        />
-                                        Bàn phím cơ AKKO 5075B Plus Naruto (Multi-modes / RGB / Hotswap / Gasket mount)
-                                        - Crystal
-                                    </Button>
-                                    <span className={cx('quantity')}>
-                                        1 x <span>₫2,959,000</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <p className={cx('total')}>
-                                <strong>Tổng số phụ: </strong>
-                                <span>₫2,959,000</span>
-                            </p>
-                            <div className={cx('cta')}>
-                                <Button primary to={config.routes.home}>
-                                    Xem giỏ hàng
-                                </Button>
-                                <Button secondary to={config.routes.home}>
-                                    Thanh toán
-                                </Button>
-                            </div>
-                            {/* <p>Chưa có sản phẩm trong giỏ hàng.</p> */}
+                            {items.length > 0 ? (
+                                <>
+                                    <div className={cx('product-list')}>
+                                        {items.map((item, index) => (
+                                            <div className={cx('product-item')} key={index}>
+                                                <div
+                                                    className={cx('remove')}
+                                                    onClick={() => handleDeleteProduct(items)}
+                                                >
+                                                    x
+                                                </div>
+                                                <Button to={config.routes.home} className={cx('product-info')}>
+                                                    <img
+                                                        src={`http://localhost:5000/img/products/${item.imageCover}`}
+                                                        alt="product"
+                                                    />
+                                                    {item.name}
+                                                </Button>
+                                                <span className={cx('quantity')}>
+                                                    {item.quantity} x <span>₫{item.price}</span>
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <p className={cx('total')}>
+                                        <strong>Tổng số phụ: </strong>
+                                        <span>₫{total}</span>
+                                    </p>
+                                    <div className={cx('cta')}>
+                                        <Button primary to={config.routes.cart}>
+                                            Xem giỏ hàng
+                                        </Button>
+                                        <Button secondary to={config.routes.home}>
+                                            Thanh toán
+                                        </Button>
+                                    </div>
+                                </>
+                            ) : (
+                                <p>Chưa có sản phẩm trong giỏ hàng.</p>
+                            )}
                         </div>
                     </PopperWrapper>
                 </div>
@@ -70,7 +90,7 @@ function Cart() {
         >
             <div className={cx('wrapper')} onClick={handleOpenModal}>
                 <div className={cx('btn')}>
-                    <span className={cx('badge')}>1</span>
+                    {items.length > 0 && <span className={cx('badge')}>{items.length}</span>}
                     <FaShoppingBasket className={cx('icon')} />
                 </div>
                 {isModalOpen && <Modal onClose={handleCloseModal}>Cart</Modal>}

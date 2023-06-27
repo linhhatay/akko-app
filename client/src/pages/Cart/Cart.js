@@ -3,10 +3,13 @@ import { AiFillTag } from 'react-icons/ai';
 
 import styles from './Cart.module.scss';
 import Button from '~/components/Button/Button';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
 function Cart() {
+    const { cart } = useSelector((state) => state);
+
     return (
         <div className={cx('wrapper')}>
             <div className="container">
@@ -28,35 +31,37 @@ function Cart() {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td className={cx('product-remove')}>
-                                                        <a href="/">x</a>
-                                                    </td>
-                                                    <td className={cx('product-thumbnail')}>
-                                                        <a href="/">
-                                                            <img
-                                                                src="https://akko.vn/wp-content/uploads/2022/01/Akko-Hamster-X-wireless-Hima-01-280x280.jpg"
-                                                                alt="product"
-                                                            />
-                                                        </a>
-                                                    </td>
-                                                    <td className={cx('product-name')}>
-                                                        <a href="/">Chuột không dây AKKO Hamster Plus – Hima</a>
-                                                    </td>
-                                                    <td className={cx('product-price')}>
-                                                        <span>₫369,000</span>
-                                                    </td>
-                                                    <td className={cx('product-quantity')}>
-                                                        <div>
-                                                            <input type="button" value="-" />
-                                                            <input type="number" value="1" />
-                                                            <input type="button" value="+" />
-                                                        </div>
-                                                    </td>
-                                                    <td className={cx('product-subtotal')}>
-                                                        <span>₫369,000</span>
-                                                    </td>
-                                                </tr>
+                                                {cart.items.map((item, index) => (
+                                                    <tr key={index}>
+                                                        <td className={cx('product-remove')}>
+                                                            <a href="/">x</a>
+                                                        </td>
+                                                        <td className={cx('product-thumbnail')}>
+                                                            <a href="/">
+                                                                <img
+                                                                    src={`http://localhost:5000/img/products/${item.imageCover}`}
+                                                                    alt="product"
+                                                                />
+                                                            </a>
+                                                        </td>
+                                                        <td className={cx('product-name')}>
+                                                            <a href="/">{item.name}</a>
+                                                        </td>
+                                                        <td className={cx('product-price')}>
+                                                            <span>₫{item.price}</span>
+                                                        </td>
+                                                        <td className={cx('product-quantity')}>
+                                                            <div>
+                                                                <input type="button" value="-" />
+                                                                <input type="number" value={item.quantity} />
+                                                                <input type="button" value="+" />
+                                                            </div>
+                                                        </td>
+                                                        <td className={cx('product-subtotal')}>
+                                                            <span>₫{item.price}</span>
+                                                        </td>
+                                                    </tr>
+                                                ))}
                                                 <tr>
                                                     <td colSpan={6} style={{ textAlign: 'left', borderBottom: '0' }}>
                                                         <Button to="/" className={cx('continue')}>
@@ -118,7 +123,7 @@ function Cart() {
                                                                                     minHeight: '2em',
                                                                                 }}
                                                                             >
-                                                                                <input type="radio" />
+                                                                                <input type="radio" checked />
                                                                                 <label>
                                                                                     Đơn hàng từ 250K được miễn phí giao
                                                                                     hàng

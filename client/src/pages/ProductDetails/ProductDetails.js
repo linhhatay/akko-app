@@ -7,8 +7,9 @@ import { Link, useParams } from 'react-router-dom';
 import { FaCartPlus } from 'react-icons/fa';
 import Socials from '~/components/Socials';
 import Product from '~/components/Product/Product';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { addToCart } from '~/redux/actions/cartAction';
 
 const cx = classNames.bind(styles);
 
@@ -16,6 +17,30 @@ function ProductDetails() {
     const { slug } = useParams();
     const { product } = useSelector((state) => state);
     const [details, setDetails] = useState([]);
+    const [isSelected, setIsSelected] = useState(false);
+    const [quantity, setQuantity] = useState(1);
+    const [options, setOptions] = useState({});
+    const dispatch = useDispatch();
+
+    const handleOptions = (e) => {
+        setIsSelected(true);
+        const value = e.target.value;
+        setOptions({
+            ...options,
+            [e.target.name]: value,
+        });
+    };
+
+    const handleAddToCart = () => {
+        if (isSelected) {
+            const item = {
+                ...details,
+                quantity,
+                options,
+            };
+            dispatch(addToCart(item));
+        }
+    };
 
     useEffect(() => {
         if (slug && product.items.length > 0) {
@@ -104,7 +129,7 @@ function ProductDetails() {
                                         </th>
                                         {details.attributes && (
                                             <td>
-                                                <select>
+                                                <select name="switch" value={isSelected} onChange={handleOptions}>
                                                     <option>Chọn một tùy chọn</option>
                                                     {details.attributes.switches.map((item, index) => (
                                                         <option key={index}>{item}</option>
@@ -117,11 +142,25 @@ function ProductDetails() {
                                 <div>
                                     <div>
                                         <div className={cx('quantity')}>
-                                            <input type="button" value="-" />
-                                            <input type="number" value="1" step="1" min="1" />
-                                            <input type="button" value="+" />
+                                            <input
+                                                type="button"
+                                                value="-"
+                                                onClick={() => setQuantity((prev) => prev - 1)}
+                                                disabled={quantity <= 1 ? true : false}
+                                            />
+                                            <input type="number" value={quantity} step="1" min="1" />
+                                            <input
+                                                type="button"
+                                                value="+"
+                                                onClick={() => setQuantity((prev) => prev + 1)}
+                                            />
                                         </div>
-                                        <div className={cx('add-to-cart')}>Thêm vào giỏ hàng</div>
+                                        <div
+                                            className={cx(['add-to-cart', isSelected && 'btn-active'])}
+                                            onClick={handleAddToCart}
+                                        >
+                                            Thêm vào giỏ hàng
+                                        </div>
                                     </div>
                                 </div>
                             </div>
