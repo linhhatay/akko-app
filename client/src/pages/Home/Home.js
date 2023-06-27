@@ -10,6 +10,7 @@ import config from '~/config';
 import Section from '~/layouts/components/Section';
 import { CiHeart, CiStar } from 'react-icons/ci';
 import Button from '~/components/Button';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
@@ -32,6 +33,8 @@ function PrevArrow(props) {
 }
 
 function Home() {
+    const { product } = useSelector((state) => state);
+
     const settings = {
         infinite: true,
         speed: 500,
@@ -139,8 +142,8 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <Section icon={<CiStar />} title="Sản phẩm mới" />
-            <Section icon={<CiHeart />} title="Hàng sắp về" isMore />
+            <Section icon={<CiStar />} title="Sản phẩm mới" data={product} />
+            <Section icon={<CiHeart />} title="Hàng sắp về" data={product} isMore />
             <div className={cx('banner')}>
                 <div className={cx('banner-inner')}>
                     <div className={cx('banner-fill')}></div>

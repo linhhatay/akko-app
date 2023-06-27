@@ -3,14 +3,31 @@ import { HiOutlineChevronDown } from 'react-icons/hi';
 
 import styles from './ProductDetails.module.scss';
 import Button from '~/components/Button';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { FaCartPlus } from 'react-icons/fa';
 import Socials from '~/components/Socials';
 import Product from '~/components/Product/Product';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 const cx = classNames.bind(styles);
 
 function ProductDetails() {
+    const { slug } = useParams();
+    const { product } = useSelector((state) => state);
+    const [details, setDetails] = useState([]);
+
+    useEffect(() => {
+        if (slug && product.items.length > 0) {
+            product.items.forEach((item) => {
+                if (item.slug === slug) {
+                    setDetails(item);
+                }
+            });
+        }
+        window.scrollTo(0, 0);
+    }, [slug, product]);
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -29,49 +46,24 @@ function ProductDetails() {
                     <div className={cx('content-top')}>
                         <div className={cx('images')}>
                             <div className={cx('image-preview')}>
-                                <div className={cx('badge')}>
-                                    <div>-1%</div>
-                                </div>
+                                {details.discount && (
+                                    <div className={cx('badge')}>
+                                        <div>{`-${details.discount}%`}</div>
+                                    </div>
+                                )}
                                 <div>
-                                    <img
-                                        src="https://akko.vn/wp-content/uploads/2023/03/ban-phim-co-akko-5075b-plus-dragon-ball-super-goku-001-768x768.jpg"
-                                        alt=""
-                                    />
+                                    <img src={`http://localhost:5000/img/products/${details.imageCover}`} alt="" />
                                 </div>
                             </div>
                             <div className={cx('thumbnails')}>
-                                <div>
-                                    <a href="/">
-                                        <img
-                                            src="https://akko.vn/wp-content/uploads/2023/03/ban-phim-co-akko-5075b-plus-dragon-ball-super-goku-001-768x768.jpg"
-                                            alt=""
-                                        />
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="/">
-                                        <img
-                                            src="https://akko.vn/wp-content/uploads/2023/03/ban-phim-co-akko-5075b-plus-dragon-ball-super-goku-001-768x768.jpg"
-                                            alt=""
-                                        />
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="/">
-                                        <img
-                                            src="https://akko.vn/wp-content/uploads/2023/03/ban-phim-co-akko-5075b-plus-dragon-ball-super-goku-001-768x768.jpg"
-                                            alt=""
-                                        />
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="/">
-                                        <img
-                                            src="https://akko.vn/wp-content/uploads/2023/03/ban-phim-co-akko-5075b-plus-dragon-ball-super-goku-001-768x768.jpg"
-                                            alt=""
-                                        />
-                                    </a>
-                                </div>
+                                {details.images &&
+                                    details.images.map((image, index) => (
+                                        <div key={index}>
+                                            <a href="/">
+                                                <img src={`http://localhost:5000/img/products/${image}`} alt="" />
+                                            </a>
+                                        </div>
+                                    ))}
                             </div>
                         </div>
                         <div className={cx('info')}>
@@ -82,10 +74,7 @@ function ProductDetails() {
                                 <span>/</span>
                                 <Link>One Piece</Link>
                             </nav>
-                            <h1>
-                                Bàn phím cơ AKKO 5075B Plus Dragon Ball Super – Goku (Multi-modes / RGB / Hotswap /
-                                Gasket mount)
-                            </h1>
+                            <h1>{details.name}</h1>
                             <div className={cx('divider')}></div>
                             <div className={cx('price-wrapper')}>
                                 <p>
@@ -113,12 +102,16 @@ function ProductDetails() {
                                         <th>
                                             <label>SWITCH</label>
                                         </th>
-                                        <td>
-                                            <select>
-                                                <option>Chọn một tùy chọn</option>
-                                                <option>Crystal</option>
-                                            </select>
-                                        </td>
+                                        {details.attributes && (
+                                            <td>
+                                                <select>
+                                                    <option>Chọn một tùy chọn</option>
+                                                    {details.attributes.switches.map((item, index) => (
+                                                        <option key={index}>{item}</option>
+                                                    ))}
+                                                </select>
+                                            </td>
+                                        )}
                                     </tbody>
                                 </table>
                                 <div>
@@ -155,10 +148,10 @@ function ProductDetails() {
                         <div className={cx('related-product')}>
                             <h3>Sản phẩm tương tự </h3>
                             <div>
-                                <Product />
-                                <Product />
-                                <Product />
-                                <Product />
+                                {/* <Product /> */}
+                                {/* <Product /> */}
+                                {/* <Product /> */}
+                                {/* <Product /> */}
                             </div>
                         </div>
                     </div>

@@ -1,9 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes, privateRoutes } from '~/routes';
 import { DefaultLayout } from '~/layouts';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchProducts } from './redux/actions/productAction';
 
 function App() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchProducts());
+    }, []);
+
     return (
         <Router>
             <div className="App">

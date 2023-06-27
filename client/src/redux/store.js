@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import authReducer from './reducers/authReducer';
 import notifyReducer from './reducers/notifyReducer';
 import userReducer from './reducers/userReducer';
+import productReducer from './reducers/productReducer';
 
 const persistConfig = {
     key: 'rootClient',
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     auth: authReducer,
     notify: notifyReducer,
     user: userReducer,
+    product: productReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

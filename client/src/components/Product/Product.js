@@ -5,25 +5,26 @@ import { FaCheck } from 'react-icons/fa';
 
 const cx = classNames.bind(styles);
 
-function Product() {
+function Product({ data }) {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('badge')}>
-                    <div>-1%</div>
-                </div>
+                {data.discount > 0 && (
+                    <div className={cx('badge')}>
+                        <div>{`-${data.discount}%`}</div>
+                    </div>
+                )}
                 <div className={cx('box')}>
-                    <Link to="/">
+                    <Link to={`${data.slug}`}>
                         <img
                             className={cx('image')}
-                            src="https://akko.vn/wp-content/uploads/2023/03/ban-phim-co-akko-5075b-plus-dragon-ball-super-goku-001-768x768.jpg"
+                            src={`http://localhost:5000/img/products/${data.imageCover}`}
                             alt="product"
                         />
                     </Link>
                     <div className={cx('info')}>
-                        <Link to="/" className={cx('title')}>
-                            Bàn phím cơ AKKO 5075B Plus Dragon Ball Super – Goku (Multi-modes / RGB / Hotswap / Gasket
-                            mount)
+                        <Link to={`/${data.slug}`} className={cx('title')}>
+                            {data.name}
                         </Link>
                         <div>
                             <div className={cx('price')}>

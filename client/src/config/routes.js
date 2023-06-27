@@ -1,5 +1,6 @@
 const routes = {
     home: '/',
+    productDetail: '/:slug',
     store: '/store',
     cart: '/gio-hang',
     keyboard: '/keyboard',
@@ -15,7 +16,6 @@ const routes = {
     editAddress: '/edit-address',
     forgotPassword: '/forgot-password',
     resetPassword: '/reset-password',
-    productDetail: '/product-detail',
 };
 
 export default routes;

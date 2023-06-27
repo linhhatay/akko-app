@@ -1,4 +1,3 @@
-const Keyboard = require("../models/Products/keyboardModel");
 const Product = require("../models/Products/productModel");
 const catchAsync = require("../utils/catchAsync");
 const factory = require("./handlerFactory");
@@ -58,53 +57,14 @@ exports.resizeImages = catchAsync(async (req, res, next) => {
   next();
 });
 
-// prettier-ignore
-const models = {
-  'Tai Nghe': Headphone,
-  'Bàn Phím': Keyboard,
-  'Chuột': Mouse,
-  'Bàn Di Chuột': Mousepad,
-};
-
-const createSubProduct = (category, data) => {
-  const Model = models[category];
-  if (!Model) {
-    throw new Error(`Invalid category: ${category}`);
-  }
-  return new Model(data);
-};
-
-exports.createProduct = catchAsync(async (req, res, next) => {
-  // prettier-ignore
-  const { name, rating, price, imageCover, images, discount, quantity, description, category, productType, ...rest } = req.body;
-
-  // prettier-ignore
-  const productData = { name, rating, price, imageCover, images, discount, quantity, description, category, productType };
-  const subProductData = { ...rest };
-  const newProduct = new Product(productData);
-  const subProductObj = createSubProduct(category, subProductData);
-
-  subProductObj.product = newProduct._id;
-  await subProductObj.save();
-
-  newProduct.specs = subProductObj._id;
-  await newProduct.save();
-
-  res.status(201).json({
-    status: "success",
-    data: {
-      newProduct,
-    },
-  });
-});
-
 exports.aliasTopProducts = (req, res, next) => {
   req.query.limit = "7";
   req.query.fields = "name,rating,price,discount,imageCover,quantity";
   next();
 };
 
+exports.createProduct = factory.createOne(Product);
 exports.getAllProducts = factory.getAll(Product);
-exports.getProduct = factory.getOne(Product, "specs");
+exports.getProduct = factory.getOne(Product);
 exports.updateProduct = factory.updateOne(Product);
 exports.deleteProduct = factory.deleteOne(Product);

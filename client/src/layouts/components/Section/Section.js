@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-function Section({ icon, title, isMore }) {
+function Section({ icon, title, data, isMore }) {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('title')}>
@@ -28,12 +28,18 @@ function Section({ icon, title, isMore }) {
             <div className={cx('container')}>
                 <div className={cx('row')}>
                     <div className={cx('product-list')}>
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
+                        {data.items.map((item, index) => (
+                            <Product data={item} key={index} />
+                        ))}
+                        {data.items.map((item, index) => (
+                            <Product data={item} key={index} />
+                        ))}
+                        {data.items.map((item, index) => (
+                            <Product data={item} key={index} />
+                        ))}
+                        {data.items.map((item, index) => (
+                            <Product data={item} key={index} />
+                        ))}
                     </div>
                 </div>
             </div>
