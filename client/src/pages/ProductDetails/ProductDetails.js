@@ -150,7 +150,7 @@ function ProductDetails() {
                                                 onClick={() => setQuantity((prev) => prev - 1)}
                                                 disabled={quantity <= 1 ? true : false}
                                             />
-                                            <input type="number" value={quantity} step="1" min="1" />
+                                            <input type="text" value={quantity} step="1" min="1" />
                                             <input
                                                 type="button"
                                                 value="+"

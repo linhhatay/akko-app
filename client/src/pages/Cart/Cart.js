@@ -78,7 +78,11 @@ function Cart() {
                                                                         handleDecrease(item._id, item.quantity)
                                                                     }
                                                                 />
-                                                                <input type="number" value={item.quantity} />
+                                                                <input
+                                                                    type="number"
+                                                                    value={item.quantity}
+                                                                    inputMode="numeric"
+                                                                />
                                                                 <input
                                                                     type="button"
                                                                     value="+"
@@ -89,7 +93,7 @@ function Cart() {
                                                             </div>
                                                         </td>
                                                         <td className={cx('product-subtotal')}>
-                                                            <span>₫{item.price}</span>
+                                                            <span>₫{item.price * item.quantity}</span>
                                                         </td>
                                                     </tr>
                                                 ))}

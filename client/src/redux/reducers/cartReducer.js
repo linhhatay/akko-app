@@ -12,7 +12,7 @@ const cartReducer = (state = initialState, action) => {
                 const existingItem = state.items[existingIndex];
                 const updatedItem = {
                     ...existingItem,
-                    quantity: existingItem.quantity + 1,
+                    quantity: existingItem.quantity + action.payload.quantity,
                     // price: existingItem.price + action.payload.price,
                 };
                 const updatedItems = [
@@ -29,7 +29,7 @@ const cartReducer = (state = initialState, action) => {
             } else {
                 const newItem = {
                     ...action.payload,
-                    quantity: 1,
+                    quantity: action.payload.quantity,
                     price: action.payload.price,
                 };
 

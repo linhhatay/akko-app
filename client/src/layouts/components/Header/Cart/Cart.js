@@ -48,10 +48,7 @@ function Cart() {
                                     <div className={cx('product-list')}>
                                         {items.map((item, index) => (
                                             <div className={cx('product-item')} key={index}>
-                                                <div
-                                                    className={cx('remove')}
-                                                    onClick={() => handleDeleteProduct(items)}
-                                                >
+                                                <div className={cx('remove')} onClick={() => handleDeleteProduct(item)}>
                                                     x
                                                 </div>
                                                 <Button to={config.routes.home} className={cx('product-info')}>
