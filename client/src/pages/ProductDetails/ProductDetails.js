@@ -124,19 +124,21 @@ function ProductDetails() {
                             <div className={cx('actions')}>
                                 <table>
                                     <tbody>
-                                        <th>
-                                            <label>SWITCH</label>
-                                        </th>
-                                        {details.attributes && (
-                                            <td>
-                                                <select name="switch" value={isSelected} onChange={handleOptions}>
-                                                    <option>Chọn một tùy chọn</option>
-                                                    {details.attributes.switches.map((item, index) => (
-                                                        <option key={index}>{item}</option>
-                                                    ))}
-                                                </select>
-                                            </td>
-                                        )}
+                                        <tr>
+                                            <th>
+                                                <label>SWITCH</label>
+                                            </th>
+                                            {details.attributes && (
+                                                <td>
+                                                    <select name="switch" value={isSelected} onChange={handleOptions}>
+                                                        <option>Chọn một tùy chọn</option>
+                                                        {details.attributes.switches.map((item, index) => (
+                                                            <option key={index}>{item}</option>
+                                                        ))}
+                                                    </select>
+                                                </td>
+                                            )}
+                                        </tr>
                                     </tbody>
                                 </table>
                                 <div>

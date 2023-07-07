@@ -20,6 +20,7 @@ const cartReducer = (state = initialState, action) => {
                     updatedItem,
                     ...state.items.slice(existingIndex + 1),
                 ];
+
                 return {
                     ...state,
                     items: updatedItems,
@@ -31,6 +32,7 @@ const cartReducer = (state = initialState, action) => {
                     quantity: 1,
                     price: action.payload.price,
                 };
+
                 return {
                     ...state,
                     items: [...state.items, newItem],
@@ -38,17 +40,27 @@ const cartReducer = (state = initialState, action) => {
                 };
             }
         case 'REMOVE_FROM_CART':
-            const updatedItems = state.items.filter((item) => item.id !== action.payload.id);
+            const updatedItems = state.items.filter((item) => item._id !== action.payload._id);
+
             return {
                 ...state,
                 items: updatedItems,
                 total: state.total - action.payload.price,
             };
         case 'UPDATE_QUANTITY':
-            const updatedCart = state.items.map((item) =>
-                item.id === action.payload.id ? { ...item, quantity: action.payload.quantity } : item,
-            );
+            const updatedCart = state.items
+                .map((item) => {
+                    if (item._id === action.payload.id) {
+                        if (action.payload.quantity === 0) {
+                            return null;
+                        }
+                        return { ...item, quantity: action.payload.quantity };
+                    }
+                    return item;
+                })
+                .filter((item) => item !== null);
             const newTotal = updatedCart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
             return {
                 ...state,
                 items: updatedCart,

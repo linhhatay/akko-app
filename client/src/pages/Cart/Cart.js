@@ -3,12 +3,28 @@ import { AiFillTag } from 'react-icons/ai';
 
 import styles from './Cart.module.scss';
 import Button from '~/components/Button/Button';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeFromCart, updateQuantity } from '~/redux/actions/cartAction';
 
 const cx = classNames.bind(styles);
 
 function Cart() {
     const { cart } = useSelector((state) => state);
+    const dispatch = useDispatch();
+
+    const handleIncrease = (id, quantity) => {
+        quantity++;
+        dispatch(updateQuantity(id, quantity));
+    };
+
+    const handleDecrease = (id, quantity) => {
+        quantity--;
+        dispatch(updateQuantity(id, quantity));
+    };
+
+    const handleDeleteProduct = (product) => {
+        dispatch(removeFromCart(product));
+    };
 
     return (
         <div className={cx('wrapper')}>
@@ -33,8 +49,11 @@ function Cart() {
                                             <tbody>
                                                 {cart.items.map((item, index) => (
                                                     <tr key={index}>
-                                                        <td className={cx('product-remove')}>
-                                                            <a href="/">x</a>
+                                                        <td
+                                                            className={cx('product-remove')}
+                                                            onClick={() => handleDeleteProduct(item)}
+                                                        >
+                                                            <a>x</a>
                                                         </td>
                                                         <td className={cx('product-thumbnail')}>
                                                             <a href="/">
@@ -52,9 +71,21 @@ function Cart() {
                                                         </td>
                                                         <td className={cx('product-quantity')}>
                                                             <div>
-                                                                <input type="button" value="-" />
+                                                                <input
+                                                                    type="button"
+                                                                    value="-"
+                                                                    onClick={() =>
+                                                                        handleDecrease(item._id, item.quantity)
+                                                                    }
+                                                                />
                                                                 <input type="number" value={item.quantity} />
-                                                                <input type="button" value="+" />
+                                                                <input
+                                                                    type="button"
+                                                                    value="+"
+                                                                    onClick={() =>
+                                                                        handleIncrease(item._id, item.quantity)
+                                                                    }
+                                                                />
                                                             </div>
                                                         </td>
                                                         <td className={cx('product-subtotal')}>

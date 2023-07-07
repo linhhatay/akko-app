@@ -1,6 +1,6 @@
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaShoppingBasket } from 'react-icons/fa';
 
 import 'tippy.js/dist/tippy.css';
@@ -90,7 +90,9 @@ function Cart() {
         >
             <div className={cx('wrapper')} onClick={handleOpenModal}>
                 <div className={cx('btn')}>
-                    {items.length > 0 && <span className={cx('badge')}>{items.length}</span>}
+                    {items.length > 0 && (
+                        <span className={cx('badge')}>{items.reduce((total, item) => total + item.quantity, 0)}</span>
+                    )}
                     <FaShoppingBasket className={cx('icon')} />
                 </div>
                 {isModalOpen && <Modal onClose={handleCloseModal}>Cart</Modal>}
