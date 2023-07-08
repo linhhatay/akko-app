@@ -13,7 +13,7 @@ function DefaultLayout({ children }) {
     return (
         <div className={cx('wrapper')}>
             <Header />
-            {notify.message && (
+            {/* {notify.message && (
                 <div className={cx('message')}>
                     <li>
                         <div>
@@ -21,7 +21,7 @@ function DefaultLayout({ children }) {
                         </div>
                     </li>
                 </div>
-            )}
+            )} */}
             <div className={cx('content')}>{children}</div>
             <Footer />
         </div>

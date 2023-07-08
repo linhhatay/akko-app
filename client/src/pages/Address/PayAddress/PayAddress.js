@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
-import styles from './Pay.module.scss';
+import styles from './PayAddress.module.scss';
 import Button from '~/components/Button/Button';
 
 const cx = classNames.bind(styles);
 
-function Pay() {
+function PayAddress() {
     return (
         <div className={cx('wrapper')}>
             <div className="container">
@@ -77,4 +77,4 @@ function Pay() {
     );
 }
 
-export default Pay;
+export default PayAddress;

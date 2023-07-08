@@ -3,6 +3,7 @@ const routes = {
     productDetail: '/:slug',
     store: '/store',
     cart: '/gio-hang',
+    pay: '/thanh-toan',
     keyboard: '/keyboard',
     mouse: '/mouse',
     keycap: '/keycap',
