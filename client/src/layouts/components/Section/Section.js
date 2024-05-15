@@ -14,7 +14,7 @@ function Section({ icon, title, data, isMore }) {
                 <h3>
                     <b />
                     <span>
-                        {icon}
+                        <i className={cx('icon')}></i>
                         {title}
                     </span>
                     <b />

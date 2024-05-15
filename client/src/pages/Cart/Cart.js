@@ -194,7 +194,7 @@ function Cart() {
                                             </tbody>
                                         </table>
                                         <div className={cx('checkout-btn')}>
-                                            <Button to="/">Tiến hành thanh toán</Button>
+                                            <Button to="/thanh-toan">Tiến hành thanh toán</Button>
                                         </div>
                                     </div>
                                     <form>

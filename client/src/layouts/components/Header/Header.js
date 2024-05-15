@@ -66,30 +66,32 @@ function Header() {
 
     return (
         <div className={cx(['wrapper', sticky && 'sticky'])}>
-            <div className={cx('top-bar')}>
-                <div>
+            <div className={cx('main')}>
+                <div className={cx('top-bar')}>
                     <div>
-                        <strong>Akko Touch the Fashion...</strong>
+                        <div>
+                            <strong>Akko Touch the Fashion...</strong>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className={cx('inner')}>
-                <div className={cx('mobile-nav')} onClick={handleOpenModal}>
-                    <RxHamburgerMenu className={cx('mobile-nav-icon')} />
+                <div className={cx('inner')}>
+                    <div className={cx('mobile-nav')} onClick={handleOpenModal}>
+                        <RxHamburgerMenu className={cx('mobile-nav-icon')} />
+                    </div>
+                    {isModalOpen && (
+                        <Modal onClose={handleCloseModal}>
+                            <Sidebar />
+                        </Modal>
+                    )}
+                    <div className={cx('logo')}>
+                        <Link to={config.routes.home}>
+                            <img src="https://akko.vn/wp-content/uploads/2019/09/index_logo2.png" alt="logo" />
+                        </Link>
+                    </div>
+                    {!isMobile && <Search />}
+                    <Navigation />
+                    <Cart />
                 </div>
-                {isModalOpen && (
-                    <Modal onClose={handleCloseModal}>
-                        <Sidebar />
-                    </Modal>
-                )}
-                <div className={cx('logo')}>
-                    <Link to={config.routes.home}>
-                        <img src="https://akko.vn/wp-content/uploads/2019/09/index_logo2.png" alt="logo" />
-                    </Link>
-                </div>
-                {!isMobile && <Search />}
-                <Navigation />
-                <Cart />
             </div>
         </div>
     );

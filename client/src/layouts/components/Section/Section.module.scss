@@ -31,7 +31,7 @@
         }
 
         span {
-            display: flex;
+            // display: flex;
             align-items: center;
             margin: 0 15px;
             text-align: center;
@@ -76,4 +76,20 @@
 .product-list {
     display: flex;
     flex-wrap: wrap;
+}
+
+.icon {
+    display: inline-block;
+    opacity: 0.6;
+    margin-right: 0.5em;
+    height: 24px;
+    font-size: 20px;
+
+    &:before {
+        line-height: 1.2;
+        content: url('../../../../public/icons/StarIcon.svg');
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+    }
 }

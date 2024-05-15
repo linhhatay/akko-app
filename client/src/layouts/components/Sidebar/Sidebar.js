@@ -94,7 +94,7 @@ function Side() {
                             )}
                         </li>
                         <li>
-                            <Button className={cx('menu-item')} to={config.routes.home}>
+                            <Button className={cx('menu-item')} to={config.routes.account}>
                                 Đăng nhập
                             </Button>
                         </li>

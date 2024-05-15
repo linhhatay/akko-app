@@ -30,20 +30,16 @@ function Navigation() {
         <div className={cx('wrapper')}>
             <Menu>
                 <MenuItem title="Keyboard" to={config.routes.keyboard} />
+                <MenuItem title="Kit bàn phím" to={config.routes.keyboard} />
                 <MenuItem title="Mouse" to={config.routes.mouse} />
                 <MenuItem title="Keycap" to={config.routes.keycap} />
                 <MenuItem title="Switch" to={config.routes.switch} />
                 <MenuItem title="Phụ kiện" to={config.routes.accessory} />
                 <MenuItem title="Tin tức" to={config.routes.news} />
-
                 <Dropdown items={MENU_SUPPORT}>
-                    <div>
-                        <MenuItem title="Hỗ trợ" to={config.routes.support} dropdown />
-                    </div>
+                    <MenuItem title="Hỗ trợ" to={config.routes.support} dropdown />
                 </Dropdown>
-
-                <div className={cx('divider')}></div>
-
+                <li className={cx('divider')}></li>
                 <MenuItem title={auth.isAuthenticated ? 'Tài khoản' : 'Đăng nhập'} to={config.routes.account} />
             </Menu>
         </div>

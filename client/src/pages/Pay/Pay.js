@@ -1,10 +1,13 @@
 import classNames from 'classnames/bind';
 import styles from './Pay.module.scss';
 import Button from '~/components/Button/Button';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
 function Pay() {
+    const { items, total } = useSelector((state) => state.cart);
+
     return (
         <div className={cx('wrapper')}>
             <div className="container">
@@ -115,26 +118,26 @@ function Pay() {
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr className={cx('cart-item')}>
-                                                            <td className="product-name">
-                                                                Bàn phím cơ AKKO 5075B Plus Dragon Ball Super – Goku
-                                                                (Multi-modes / RGB / Hotswap / Gasket mount) -
-                                                                Crystal&nbsp;
-                                                                <strong className="product-quantity">
-                                                                    ×&nbsp;1
-                                                                </strong>{' '}
-                                                            </td>
-                                                            <td className="product-total">
-                                                                <span className={cx('amount')}>
-                                                                    <bdi>
-                                                                        <span className="woocommerce-Price-currencySymbol">
-                                                                            ₫
-                                                                        </span>
-                                                                        2,959,000
-                                                                    </bdi>
-                                                                </span>
-                                                            </td>
-                                                        </tr>
+                                                        {items.map((item, index) => (
+                                                            <tr className={cx('cart-item')} key={index}>
+                                                                <td className="product-name">
+                                                                    {item.name} - Crystal&nbsp;
+                                                                    <strong className="product-quantity">
+                                                                        ×&nbsp;{item.quantity}
+                                                                    </strong>{' '}
+                                                                </td>
+                                                                <td className="product-total">
+                                                                    <span className={cx('amount')}>
+                                                                        <bdi>
+                                                                            <span className="woocommerce-Price-currencySymbol">
+                                                                                ₫
+                                                                            </span>
+                                                                            {item.price}
+                                                                        </bdi>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        ))}
                                                     </tbody>
                                                     <tfoot>
                                                         <tr>
@@ -145,7 +148,7 @@ function Pay() {
                                                                         <span className="woocommerce-Price-currencySymbol">
                                                                             ₫
                                                                         </span>
-                                                                        2,959,000
+                                                                        {total}
                                                                     </bdi>
                                                                 </span>
                                                             </td>
@@ -236,7 +239,7 @@ function Pay() {
                                                                     <span className={cx('amount')}>
                                                                         <bdi>
                                                                             <span>₫</span>
-                                                                            2,959,000
+                                                                            {total}
                                                                         </bdi>
                                                                     </span>
                                                                 </strong>{' '}

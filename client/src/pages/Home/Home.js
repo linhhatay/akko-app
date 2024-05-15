@@ -142,7 +142,25 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <Section icon={<CiStar />} title="Sản phẩm mới" data={product} />
+            <Section
+                icon={
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 21 21" fill="none">
+                        <g clip-path="url(#clip0_1_68)">
+                            <path
+                                d="M20.42 8.53394L13.5059 7.53784L10.42 1.26831L7.33405 7.53784L0.419983 8.53394L5.41998 13.4167L4.24811 20.2917L10.42 17.0496L16.5919 20.2917L15.42 13.4167L20.42 8.53394ZM10.42 15.4871L6.06451 17.7917L6.88483 12.9285L3.34967 9.49097L8.23248 8.78784L10.42 4.35425L12.6075 8.78784L17.4903 9.49097L13.9551 12.9285L14.7755 17.7917L10.42 15.4871Z"
+                                fill="#555555"
+                            />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_1_68">
+                                <rect width="20" height="20" fill="white" transform="matrix(1 0 0 -1 0.419983 20.78)" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                }
+                title="Sản phẩm mới"
+                data={product}
+            />
             <Section icon={<CiHeart />} title="Hàng sắp về" data={product} isMore />
             <div className={cx('banner')}>
                 <div className={cx('banner-inner')}>
